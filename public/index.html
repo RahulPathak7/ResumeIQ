@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Compare your resume with a job description and find missing skills." />
+  <title>ResumeIQ — AI Resume Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a href="/" class="logo">Resume<span>IQ</span></a>
+    <span class="nav-label">AI Resume Analyzer</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">SMARTER JOB APPLICATIONS</p>
+      <h1>Make your resume match<br />your <span>next opportunity.</span></h1>
+      <p class="subtitle">
+        Compare your resume with a job description, discover missing skills,
+        and get practical improvement tips.
+      </p>
+    </section>
+
+    <section class="input-grid">
+      <div class="panel">
+        <label for="resumeText">Your resume</label>
+        <p class="hint">Upload a PDF, DOCX, or TXT file (max 5 MB), or paste your resume below.</p>
+
+        <div class="upload-row">
+          <input
+            id="resumeFile"
+            type="file"
+            accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"
+          />
+          <button id="uploadBtn" class="secondary small-button" type="button">
+            Read file
+          </button>
+        </div>
+
+        <p id="fileStatus" class="file-status" aria-live="polite"></p>
+
+        <textarea
+          id="resumeText"
+          maxlength="30000"
+          placeholder="Education, skills, projects, experience..."
+          required
+        ></textarea>
+
+        <div class="counter" id="resumeCounter">0 / 30000</div>
+      </div>
+
+      <div class="panel">
+        <label for="jobDescription">Job description</label>
+        <p class="hint">Paste the complete job description.</p>
+
+        <textarea
+          id="jobDescription"
+          maxlength="20000"
+          placeholder="Responsibilities, required skills, qualifications..."
+          required
+        ></textarea>
+
+        <div class="counter" id="jobCounter">0 / 20000</div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button id="analyzeBtn" type="button">Analyze my resume →</button>
+      <button id="demoBtn" class="secondary" type="button">Try sample data</button>
+      <button id="clearBtn" class="secondary" type="button">Clear all</button>
+    </div>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <section id="results" class="results" hidden>
+      <div class="results-heading">
+        <div>
+          <p class="eyebrow">YOUR REPORT</p>
+          <h2>Resume analysis</h2>
+        </div>
+        <span id="aiBadge" class="badge">Keyword analysis</span>
+      </div>
+
+      <div class="report-actions">
+        <button id="downloadBtn" class="secondary" type="button">
+          Download report (.txt)
+        </button>
+        <button id="printBtn" class="secondary" type="button">
+          Print / Save as PDF
+        </button>
+      </div>
+
+      <div class="score-panel">
+        <div class="score-circle" id="scoreCircle">
+          <div>
+            <strong id="score">0%</strong>
+            <span>keyword match</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 id="scoreTitle">Your report is ready</h3>
+          <p id="scoreDescription"></p>
+          <p class="disclaimer">
+            This is a keyword coverage score, not a hiring prediction.
+          </p>
+        </div>
+      </div>
+
+      <div class="keyword-grid">
+        <div class="panel">
+          <h3>✓ Matched keywords</h3>
+          <div id="matchedKeywords" class="chips"></div>
+        </div>
+
+        <div class="panel">
+          <h3>＋ Missing keywords</h3>
+          <div id="missingKeywords" class="chips"></div>
+        </div>
+      </div>
+
+      <div class="panel suggestions-panel">
+        <h3>Improvement tips</h3>
+        <ul id="suggestions"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    ResumeIQ · HTML, CSS, JavaScript, Node.js, Express, MongoDB and optional AI
+    · Your resume is processed by this server; configure external AI only if you choose to.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
